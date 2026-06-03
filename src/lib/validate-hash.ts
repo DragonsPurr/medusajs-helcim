@@ -1,5 +1,5 @@
-import { createHash } from "crypto"
 import type { HelcimTransactionResponse } from "./types"
+import { buildHelcimPayHash } from "./build-helcim-pay-hash"
 
 /**
  * Validates the HelcimPay.js transaction response hash.
@@ -10,10 +10,5 @@ export function validateHelcimPayHash(
   secretToken: string,
   hash: string
 ): boolean {
-  const cleanedJson = JSON.stringify(transactionData)
-  const computed = createHash("sha256")
-    .update(cleanedJson + secretToken)
-    .digest("hex")
-
-  return computed === hash
+  return buildHelcimPayHash(transactionData, secretToken) === hash
 }

@@ -11,9 +11,9 @@ Medusa v2 payment provider for [Helcim](https://www.helcim.com/) using [HelcimPa
 ## Install
 
 ```bash
-npm install @boxingoctopus/medusajs-helcim
+npm install @dragonspurr/medusajs-helcim
 # or
-yarn add @boxingoctopus/medusajs-helcim
+yarn add @dragonspurr/medusajs-helcim
 ```
 
 ## Configure Medusa
@@ -32,7 +32,7 @@ module.exports = defineConfig({
       options: {
         providers: [
           {
-            resolve: "@boxingoctopus/medusajs-helcim/providers/helcim",
+            resolve: "@dragonspurr/medusajs-helcim/providers/helcim",
             id: "helcim",
             options: {
               apiToken: process.env.HELCIM_API_TOKEN!,
@@ -110,6 +110,18 @@ Supported currencies: **CAD**, **USD** (Helcim limitation).
 
 Configure [Helcim webhooks](https://devdocs.helcim.com/docs/webhooks) with your Medusa payment webhook URL (e.g. `https://your-store.com/hooks/payment/pp_helcim_helcim`). Enable `cardTransaction` events. Set `webhookVerifierToken` in plugin options to verify signatures.
 
+## Tests
+
+```bash
+npm test
+# watch mode
+npm run test:watch
+# coverage
+npm run test:coverage
+```
+
+Unit tests cover hash validation, amount/currency helpers, the Helcim HTTP client (mocked `fetch`), and the payment provider service (mocked `HelcimClient`).
+
 ## Local development
 
 ```bash
@@ -121,7 +133,7 @@ Link into a Medusa app:
 
 ```bash
 yarn link
-cd ../your-medusa-app && yarn link @boxingoctopus/medusajs-helcim
+cd ../your-medusa-app && yarn link @dragonspurr/medusajs-helcim
 ```
 
 ## License

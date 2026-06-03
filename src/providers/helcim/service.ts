@@ -80,7 +80,11 @@ class HelcimPaymentProviderService extends AbstractPaymentProvider<HelcimOptions
     }
   }
 
-  constructor(container: InjectedDependencies, options: HelcimOptions) {
+  constructor(
+    container: InjectedDependencies,
+    options: HelcimOptions,
+    client?: HelcimClient
+  ) {
     super(container, options)
 
     this.logger_ = container.logger
@@ -89,7 +93,7 @@ class HelcimPaymentProviderService extends AbstractPaymentProvider<HelcimOptions
       paymentMethod: "cc",
       ...options,
     }
-    this.client_ = new HelcimClient(this.options_)
+    this.client_ = client ?? new HelcimClient(this.options_)
   }
 
   async initiatePayment(
