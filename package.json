@@ -1,0 +1,51 @@
+{
+  "name": "@boxingoctopus/medusajs-helcim",
+  "version": "0.1.0",
+  "description": "Helcim payment provider for Medusa v2 (HelcimPay.js)",
+  "license": "MIT",
+  "author": "Boxing Octopus Creative",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BoxingOctopus/medusajs-helcim.git"
+  },
+  "files": [
+    "dist",
+    "!dist/**/__tests__"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./providers/helcim": {
+      "import": "./dist/providers/helcim/index.js",
+      "require": "./dist/providers/helcim/index.js",
+      "types": "./dist/providers/helcim/index.d.ts"
+    }
+  },
+  "keywords": [
+    "medusa-plugin",
+    "medusa-plugin-payment",
+    "helcim",
+    "medusa-v2"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc --build",
+    "watch": "tsc --watch"
+  },
+  "peerDependencies": {
+    "@medusajs/framework": ">=2.3.0"
+  },
+  "devDependencies": {
+    "@medusajs/framework": "^2.15.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  }
+}
