@@ -127,5 +127,3 @@ cd ../your-medusa-app && yarn link @boxingoctopus/medusajs-helcim
 ## License
 
 MIT — see [LICENSE](LICENSE).
-# medusajs-helcim
-# medusajs-helcim
